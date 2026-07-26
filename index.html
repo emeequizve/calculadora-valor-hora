@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calculadora Valor Hora</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f0f11">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Valor Hora">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%23c4b5fd'/%3E%3Ctext x='90' y='110' font-size='80' text-anchor='middle' fill='%230f0f11'%3E%24%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <main class="container">
+        <header class="app-header">
+            <div class="app-icon">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                    <rect width="48" height="48" rx="14" fill="#c4b5fd"/>
+                    <text x="24" y="33" font-size="26" text-anchor="middle" fill="#0f0f11" font-weight="600">$</text>
+                </svg>
+            </div>
+            <h1>Calculadora de valor hora</h1>
+            <p>Ingresa tus datos laborales para calcular tu remuneración</p>
+        </header>
+
+        <form id="calcForm" novalidate>
+            <div class="input-group">
+                <label for="salario">Salario mensual</label>
+                <div class="input-wrapper">
+                    <span class="input-prefix">$</span>
+                    <input 
+                        type="number" 
+                        id="salario" 
+                        placeholder="450000" 
+                        min="1"
+                        inputmode="numeric"
+                        required
+                    >
+                </div>
+                <span class="error-msg" id="error-salario">Ingresa un salario válido</span>
+            </div>
+
+            <div class="input-group">
+                <label for="horasSemanales">Horas semanales</label>
+                <div class="input-wrapper">
+                    <input 
+                        type="number" 
+                        id="horasSemanales" 
+                        placeholder="45" 
+                        min="1"
+                        max="168"
+                        inputmode="numeric"
+                        required
+                    >
+                    <span class="input-suffix">h/semana</span>
+                </div>
+                <span class="error-msg" id="error-horas">Ingresa las horas semanales</span>
+            </div>
+
+            <div class="input-group">
+                <label for="horasExtras">
+                    Horas extras mensuales
+                    <span class="optional">(opcional)</span>
+                </label>
+                <div class="input-wrapper">
+                    <input 
+                        type="number" 
+                        id="horasExtras" 
+                        placeholder="10" 
+                        min="0"
+                        inputmode="numeric"
+                    >
+                    <span class="input-suffix">h/mes</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-calc">
+                <span class="btn-text">Calcular</span>
+                <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </button>
+        </form>
+
+        <section class="results" id="resultados" aria-live="polite"></section>
+
+        <footer class="app-footer">
+            <p>Basado en 52 semanas / 12 meses</p>
+        </footer>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
